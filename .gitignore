@@ -1,0 +1,12 @@
+.DS_Store
+~*
+
+# Internal-only Dockerfiles referencing private Chainguard registry. Never push.
+*.internal
+Dockerfile.internal
+
+z
+z/*
+
+# Memes — local only, never push.
+memes/
