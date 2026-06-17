@@ -16,6 +16,14 @@ docker build -f Dockerfile -t 10-demo-chainguard-node .
 docker run -d --name 10-demo-chainguard-node -p 5010:5000 10-demo-chainguard-node
 ```
 
+## Key behaviors
+
+| Action | Result |
+|---|---|
+| `/ping?host=8.8.8.8` | JSON ping response -- shell present, command runs |
+| `/ping?host=8.8.8.8; id` | Command injection works, returns uid output |
+| `docker exec 10-demo-chainguard-node /bin/sh` | Shell access granted via busybox |
+
 ## Teardown
 
 ```bash

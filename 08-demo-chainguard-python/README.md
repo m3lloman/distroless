@@ -10,6 +10,14 @@ docker build -f Dockerfile -t 08-demo-chainguard-python .
 docker run -d --name 08-demo-chainguard-python -p 5008:5000 08-demo-chainguard-python
 ```
 
+## Key behaviors
+
+| Action | Result |
+|---|---|
+| `/ping?host=8.8.8.8` | 500 -- subprocess(shell=True) needs /bin/sh |
+| `/ping?host=8.8.8.8; id` | 500 -- exploit never runs |
+| `docker exec 08-demo-chainguard-python /bin/sh` | OCI error -- /bin/sh does not exist |
+
 ## Teardown
 
 ```bash

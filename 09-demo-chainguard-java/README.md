@@ -11,6 +11,14 @@ docker build -f Dockerfile -t 09-demo-chainguard-java .
 docker run -d --name 09-demo-chainguard-java -p 5009:5000 09-demo-chainguard-java
 ```
 
+## Key behaviors
+
+| Action | Result |
+|---|---|
+| `/ping?host=8.8.8.8` | 500 -- Runtime.exec("/bin/sh") returns No such file or directory |
+| `/ping?host=8.8.8.8; id` | 500 -- exploit never runs |
+| `docker exec 09-demo-chainguard-java /bin/sh` | OCI error -- /bin/sh does not exist |
+
 ## Teardown
 
 ```bash

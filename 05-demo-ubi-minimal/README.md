@@ -10,6 +10,20 @@ docker build -f Dockerfile -t 05-demo-ubi-minimal ..
 docker run -d --name 05-demo-ubi-minimal -p 5005:5000 05-demo-ubi-minimal
 ```
 
+## Demo
+
+```bash
+./demo.sh
+```
+
+## Key behaviors
+
+| Action | Result |
+|---|---|
+| `/ping?host=8.8.8.8` | JSON ping response |
+| `/ping?host=8.8.8.8; id` | Command injection works, returns uid output |
+| `docker exec 05-demo-ubi-minimal /bin/sh` | Shell access granted |
+
 ## Teardown
 
 ```bash

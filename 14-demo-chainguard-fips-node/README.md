@@ -11,6 +11,14 @@ docker build -f Dockerfile -t 14-demo-chainguard-fips-node .
 docker run -d --name 14-demo-chainguard-fips-node -p 5014:5000 14-demo-chainguard-fips-node
 ```
 
+## Key behaviors
+
+| Action | Result |
+|---|---|
+| `/ping?host=8.8.8.8` | JSON with error -- exec() returns ENOENT |
+| `/ping?host=8.8.8.8; id` | Same error -- exploit never executes |
+| `docker exec 14-demo-chainguard-fips-node /bin/sh` | OCI error -- /bin/sh does not exist |
+
 ## Teardown
 
 ```bash
